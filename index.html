@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sudoku</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
-  </head>
+</head>
 
-  <header>
+<header>
     <h1>Sudoku</h1>
     <div id="game-setup">
-      <div id="diff">
-        <h3>Difficulty Level: </h3>
-        <label><input id="time-1" type="radio" name="diff" value="easy" checked> Easy</label>
-        <label><input id="time-2" type="radio" name="diff" value="medium" >Medium</label>
-        <label><input id="time-3" type="radio" name="diff" value="hard" >Hard</label>
-      </div>
+        <div id="diff">
+            <h3>Difficulty Level:</h3>
+            <label><input id="time-1" type="radio" name="diff" value="easy" checked />Easy</label>
+            <label><input id="time-2" type="radio" name="diff" value="medium" />Medium</label>
+            <label><input id="time-3" type="radio" name="diff" value="hard" />Hard</label>
+        </div>
 
-      <div id="time">
-        <h3>Counter: </h3>
-        <label><input id="time-1" type="radio" name="time" value="three" checked>3 Min</label>
-        <label><input id="time-2" type="radio" name="time" value="five" >5 Min</label>
-        <label><input id="time-3" type="radio" name="time" value="ten" >10 Min</label>
-      </div>
+        <div id="time">
+            <h3>Counter:</h3>
+            <label><input id="time-1" type="radio" name="time" value="three" checked />3 Min</label>
+            <label><input id="time-2" type="radio" name="time" value="five" />5 Min</label>
+            <label><input id="time-3" type="radio" name="time" value="ten" />10 Min</label>
+        </div>
 
-      <div id="theme">
-        <h3>Theme: </h3>
-        <label><input id="time-1" type="radio" name="theme" value="light" checked>Light</label>
-        <label><input id="time-2" type="radio" name="theme" value="dark" >Dark</label>
-      </div>
+        <div id="theme">
+            <h3>Theme:</h3>
+            <label><input id="time-1" type="radio" name="theme" value="light" checked />Light</label>
+            <label><input id="time-2" type="radio" name="theme" value="dark" />Dark</label>
+        </div>
     </div>
     <button id="start-btn">New Game</button>
-  </header>
+</header>
 
-  <body>
+<body>
     <div id="stats">
         <p id="timer"></p>
         <p id="lives"></p>
@@ -54,9 +55,9 @@
             <p id="nine">9</p>
         </div>
     </div>
-
-  </body>
-  <footer>
+</body>
+<footer>
     <p>Made by Shivani Gupta</p>
-  </footer>
+</footer>
+
 </html>
