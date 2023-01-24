@@ -1,10 +1,11 @@
+
 .hidden {
     display: none;
 }
 
 body.dark {
-    background-color: rgb(43, 39, 39);
-    color: white;
+    background-color: rgb(224, 217, 217);
+    color: rgb(20, 5, 83);
 }
 
 header {
@@ -97,7 +98,7 @@ p.incorrect {
 }
 
 footer {
-    background-color: lightgray;
+    background-color: lightblue;
     text-align: center;
     font-size: large;
     font-weight: bold;
