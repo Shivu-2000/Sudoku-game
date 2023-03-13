@@ -1,15 +1,137 @@
+function generateSudoku() {
+  // Initialize an empty Sudoku grid
+  const grid = new Array(9).fill().map(() => new Array(9).fill(0));
+
+  // Fill the grid with random values using backtracking
+  solveSudoku(grid, 0, 0);
+
+  // Convert the grid to a string
+  const sudokuStr = grid.flat().join('');
+
+  return sudokuStr;
+}
+
+function solveSudoku(grid, row, col) {
+  // If we have reached the end of the grid, the Sudoku puzzle is solved
+  if (row === 9) {
+    return true;
+  }
+
+  // Calculate the next row and column
+  const [nextRow, nextCol] = col < 8 ? [row, col + 1] : [row + 1, 0];
+
+  // If the current cell is already filled, move on to the next cell
+  if (grid[row][col] !== 0) {
+    return solveSudoku(grid, nextRow, nextCol);
+  }
+
+  // Try different values for the current cell
+  const values = shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  for (const value of values) {
+    if (isValid(grid, row, col, value)) {
+      grid[row][col] = value;
+      if (solveSudoku(grid, nextRow, nextCol)) {
+        return true;
+      }
+      grid[row][col] = 0;
+    }
+  }
+
+  // If no value works, backtrack
+  return false;
+}
+
+function isValid(grid, row, col, value) {
+  // Check if the value is already in the same row or column
+  if (grid[row].includes(value) || grid.some(rowValues => rowValues[col] === value)) {
+    return false;
+  }
+
+  // Check if the value is already in the same 3x3 box
+  const boxRow = Math.floor(row / 3) * 3;
+  const boxCol = Math.floor(col / 3) * 3;
+  for (let i = boxRow; i < boxRow + 3; i++) {
+    for (let j = boxCol; j < boxCol + 3; j++) {
+      if (grid[i][j] === value) {
+        return false;
+      }
+    }
+  }
+
+  return true;
+}
+
+function shuffle(array) {
+  // Fisher-Yates shuffle algorithm
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+
+function hideRandomDigits(inputString, numToHide) {
+  // Find all digit positions in the input string
+  const digitPositions = [];
+  for (let i = 0; i < inputString.length; i++) {
+    if (/\d/.test(inputString[i])) {
+      digitPositions.push(i);
+    }
+  }
+
+  // Select `numToHide` random digit positions to hide
+  const digitsToHide = [];
+  for (let i = 0; i < Math.min(numToHide, digitPositions.length); i++) {
+    const randomIndex = Math.floor(Math.random() * digitPositions.length);
+    digitsToHide.push(digitPositions.splice(randomIndex, 1)[0]);
+  }
+
+  // Replace the selected digit positions with '-' character
+  let outputString = '';
+  for (let i = 0; i < inputString.length; i++) {
+    if (digitsToHide.includes(i)) {
+      outputString += '-';
+    } else {
+      outputString += inputString[i];
+    }
+  }
+
+  return outputString;
+}
+
+const EASY_LABEL = '30';
+const MEDIUM_LABEL = '40';
+const HARD_LABEL = '50';
+
 // Load board from files or manually
+const GENERATED_SODOKU = generateSudoku();
+const easyProbSol = {
+  solution: GENERATED_SODOKU,
+  problem: hideRandomDigits(GENERATED_SODOKU, EASY_LABEL)
+};
+
+const mediumProbSol = {
+  solution: GENERATED_SODOKU,
+  problem: hideRandomDigits(GENERATED_SODOKU, MEDIUM_LABEL)
+};
+
+const hardProbSol = {
+  solution: GENERATED_SODOKU,
+  problem: hideRandomDigits(GENERATED_SODOKU, HARD_LABEL)
+};
+
 const easy = [
-  "6------7------5-2------1---362----81--96-----71--9-4-5-2---651---78----345-------",
-  "685329174971485326234761859362574981549618732718293465823946517197852643456137298",
+  easyProbSol.problem,
+  easyProbSol.solution
 ];
 const medium = [
-  "--9-------4----6-758-31----15--4-36-------4-8----9-------75----3-------1--2--3--",
-  "619472583243985617587316924158247369926531478734698152891754236365829741472163895",
+  mediumProbSol.problem,
+  mediumProbSol.solution
 ];
 const hard = [
-  "-1-5-------97-42----5----7-5---3---7-6--2-41---8--5---1-4------2-3-----9-7----8--",
-  "712583694639714258845269173521436987367928415498175326184697532253841769976352841",
+  hardProbSol.problem,
+  hardProbSol.solution
 ];
 
 //create variable

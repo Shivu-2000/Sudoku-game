@@ -7,58 +7,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sudoku</title>
     <link rel="icon" href="/favicon/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
 </head>
 
-<header>
-    <h1>Sudoku</h1>
-    <div id="game-setup">
-        <div id="diff">
-            <h3>Difficulty Level:</h3>
-            <label><input id="diff-1" type="radio" name="diff" value="easy" checked />Easy</label>
-            <label><input id="diff-2" type="radio" name="diff" value="medium" />Medium</label>
-            <label><input id="diff-3" type="radio" name="diff" value="hard" />Hard</label>
-        </div>
-
-        <div id="time">
-            <h3>Counter:</h3>
-            <label><input id="time-1" type="radio" name="time" value="three" checked />3 Min</label>
-            <label><input id="time-2" type="radio" name="time" value="five" />5 Min</label>
-            <label><input id="time-3" type="radio" name="time" value="ten" />10 Min</label>
-        </div>
-
-        <div id="theme">
-            <h3>Theme:</h3>
-            <label><input id="theme-1" type="radio" name="theme" value="light" checked />Light</label>
-            <label><input id="theme-2" type="radio" name="theme" value="dark" />Dark</label>
-        </div>
-    </div>
-    <button id="start-btn">New Game</button>
-</header>
-
 <body>
-    <div id="stats">
-        <p id="timer"></p>
-        <p id="lives"></p>
-    </div>
-    <div id="game">
-        <div id="board"></div>
-        <div id="number-container" class="hidden">
-            <p id="one">1</p>
-            <p id="two">2</p>
-            <p id="three">3</p>
-            <p id="four">4</p>
-            <p id="five">5</p>
-            <p id="six">6</p>
-            <p id="seven">7</p>
-            <p id="eight">8</p>
-            <p id="nine">9</p>
+    <div class="body-wrapper">
+        <div class="haeder-wrapper">
+            <div class="logo">
+                Sudoku
+            </div>
+            <div id="stats" class="stats">
+                <p id="timer" class="text-animation"></p>
+                <p id="lives" class="text-animation"></p>
+            </div>
+        </div>
+        <div class="container">
+            <div id="game" class="sidebar">
+                <div id="game-radio" class="game-actions">
+                    <div id="diff">
+                        <h3>Difficulty Level:</h3>
+                        <label class="radio">
+                            <input id="diff-1" type="radio" name="diff" value="easy" checked />
+                            <span class="radio-label">Easy</span>
+                        </label>
+                        <label class="radio">
+                            <input id="diff-2" type="radio" name="diff" value="medium" />
+                            <span class="radio-label">Medium</span>
+                        </label>
+                        <label class="radio">
+                            <input id="diff-3" type="radio" name="diff" value="hard" />
+                            <span class="radio-label">Hard</span>
+                        </label>
+                    </div>
+
+                    <div id="time">
+                        <h3>Counter:</h3>
+                        <label class="radio">
+                            <input id="time-1" type="radio" name="time" value="three" checked />
+                            <span class="radio-label">3 Min</span>
+                        </label>
+                        <label class="radio">
+                            <input id="time-2" type="radio" name="time" value="five" />
+                            <span class="radio-label">5 Min</span>
+                        </label>
+                        <label class="radio">
+                            <input id="time-3" type="radio" name="time" value="ten" />
+                            <span class="radio-label">10 Min</span>
+                        </label>
+                    </div>
+
+                    <div id="theme">
+                        <h3>Theme:</h3>
+                        <label class="radio">
+                            <input id="theme-1" type="radio" name="theme" value="light" checked />
+                            <span class="radio-label">Light</span>
+                        </label>
+                        <label class="radio">
+                            <input id="theme-2" type="radio" name="theme" value="dark" />
+                            <span class="radio-label">Dark</span>
+                        </label>
+                    </div>
+                    <div class="game-btn-container">
+                        <button id="start-btn" class="game-btn">New Game</button>
+                    </div>
+                </div>
+            </div>
+            <div class="board-wrapper">
+                <div id="board"></div>
+            </div>
+            <div id="number-container" class="number-container hidden">
+                <p id="one">1</p>
+                <p id="two">2</p>
+                <p id="three">3</p>
+                <p id="four">4</p>
+                <p id="five">5</p>
+                <p id="six">6</p>
+                <p id="seven">7</p>
+                <p id="eight">8</p>
+                <p id="nine">9</p>
+            </div>
+        </div>
+        <div class="footer-wrapper">
+            <footer>
+                <p>Made with <code>love 🥰😍🤟♥💓💗💖</code> by Shivani Gupta</p>
+            </footer>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
-<footer>
-    <p>Made by Shivani Gupta</p>
-</footer>
-
 </html>
